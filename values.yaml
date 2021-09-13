@@ -34,10 +34,10 @@ ingress:
     - host: bigandsmallapps.com
       paths:
         - path: "/"
-          serviceName: landing-service
+          serviceName: "landing-service"
           servicePort: 80
         - path: "/backend"
-          serviceName: backend-service
+          serviceName: "backend-service"
           servicePort: 80
   tls:
     - secretName: stock-app-tls-secret

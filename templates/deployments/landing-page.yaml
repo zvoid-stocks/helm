@@ -1,11 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.landing.name }}"-deployment"
+  name: {{ .Values.image.landing.name }}-deployment
   labels:
     app: {{ .Values.image.landing.name }}
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: {{ .Values.image.landing.name }}
@@ -16,7 +15,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.image.landing.name }}
-        image: {{ .Values.image.landing.repository }}":"{{ .Values.image.landing.tag }}
+        image: {{ .Values.image.landing.repository }}:{{ .Values.image.landing.tag }}
         ports:
         - containerPort: {{ .Values.image.landing.containerPort }}
 
@@ -25,14 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.image.landing.name }}"-service"
+  name: {{ .Values.image.landing.name }}-service
   labels:
     app: {{ .Values.image.landing.name }}
 spec:
   selector:
-    matchLabels:
-      app: {{ .Values.image.landing.name }}
-  type: {{ .Values.service.type }}
+    app: {{ .Values.image.landing.name }}-deployment
   ports:
     - port: {{ .Values.image.landing.servicePort }}
       targetPort: {{ .Values.image.landing.containerPort }}
