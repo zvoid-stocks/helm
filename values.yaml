@@ -17,7 +17,7 @@ image:
     name: python
     repository: rahulsinha1908/stock-python-app
     pullPolicy: IfNotPresent
-    tag: v1
+    tag: v3
     containerPort: 80
     servicePort: 80
 

@@ -18,6 +18,9 @@ spec:
         image: {{ .Values.image.pythonApp.repository }}:{{ .Values.image.pythonApp.tag }}
         ports:
         - containerPort: {{ .Values.image.pythonApp.containerPort }}
+        env:
+        - name: PROD
+          value: "yes"
 
 ---
 
