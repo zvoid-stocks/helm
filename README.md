@@ -7,5 +7,5 @@ This repository is used to upgrade the deployment on kubernetes
 Use this commamnd on kubernetes to upgrade the version
 
 ```
-helm upgrade -n stocks stock-app-helm .
+helm upgrade -n stocks stocks-app-helm .
 ```

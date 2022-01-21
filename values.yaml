@@ -50,6 +50,7 @@ ingress:
     - secretName: stock-app-tls-secret
       hosts:
         - bigandsmallapps.com
+        - api.bigandsmallapps.com
 
 autoscaling:
   enabled: false
