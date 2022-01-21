@@ -2,7 +2,7 @@
 
 This repository is used to upgrade the deployment on kubernetes
 
-# Upgrade
+## Upgrade
 
 Use this commamnd on kubernetes to upgrade the version
 
