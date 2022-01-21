@@ -17,9 +17,14 @@ image:
     name: python
     repository: rahulsinha1908/stock-python-app
     pullPolicy: IfNotPresent
-    tag: v3
-    containerPort: 80
+    tag: v7
+    containerPort: 3002
     servicePort: 80
+  pythonScrapper:
+    name: python
+    repository: rahulsinha1908/stock-python-scrapper
+    pullPolicy: IfNotPresent
+    tag: v1
 
 imagePullSecrets: []
 

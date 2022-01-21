@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.pythonApp.name }}-deployment
+  labels:
+    app: {{ .Values.image.pythonApp.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.image.pythonApp.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.image.pythonApp.name }}
+    spec:
+      containers:
+      - name: {{ .Values.image.pythonApp.name }}
+        image: {{ .Values.image.pythonApp.repository }}:{{ .Values.image.pythonApp.tag }}
+        env:
+        - name: PROD
+          value: "yes"
