@@ -1,21 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.pythonApp.name }}-deployment
+  name: {{ .Values.image.pythonScrapper.name }}-deployment
   labels:
-    app: {{ .Values.image.pythonApp.name }}
+    app: {{ .Values.image.pythonScrapper.name }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.image.pythonApp.name }}
+      app: {{ .Values.image.pythonScrapper.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.image.pythonApp.name }}
+        app: {{ .Values.image.pythonScrapper.name }}
     spec:
       containers:
-      - name: {{ .Values.image.pythonApp.name }}
-        image: {{ .Values.image.pythonApp.repository }}:{{ .Values.image.pythonApp.tag }}
-        env:
-        - name: PROD
-          value: "yes"
+      - name: {{ .Values.image.pythonScrapper.name }}
+        image: {{ .Values.image.pythonScrapper.repository }}:{{ .Values.image.pythonScrapper.tag }}

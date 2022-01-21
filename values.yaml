@@ -17,11 +17,11 @@ image:
     name: python
     repository: rahulsinha1908/stock-python-app
     pullPolicy: IfNotPresent
-    tag: v7
+    tag: v8
     containerPort: 3002
     servicePort: 80
   pythonScrapper:
-    name: python
+    name: python-scrapper
     repository: rahulsinha1908/stock-python-scrapper
     pullPolicy: IfNotPresent
     tag: v1
@@ -41,7 +41,9 @@ ingress:
         - path: "/"
           serviceName: "landing-service"
           servicePort: 80
-        - path: "/backend"
+    - host: api.bigandsmallapps.com
+      paths:
+        - path: "/api/v1"
           serviceName: "backend-service"
           servicePort: 80
   tls:
