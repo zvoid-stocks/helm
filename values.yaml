@@ -8,16 +8,16 @@ image:
     servicePort: 80
   backend:
     name: backend
-    repository: nginx
+    repository: rahulsinha1908/stock-backend-app
     pullPolicy: IfNotPresent
-    tag: latest
-    containerPort: 80
+    tag: v8
+    containerPort: 3001
     servicePort: 80
   pythonApp:
     name: python
     repository: rahulsinha1908/stock-python-app
     pullPolicy: IfNotPresent
-    tag: v8
+    tag: v11
     containerPort: 3002
     servicePort: 80
   pythonScrapper:

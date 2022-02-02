@@ -32,7 +32,7 @@ metadata:
     app: {{ .Values.image.pythonApp.name }}
 spec:
   selector:
-    app: {{ .Values.image.pythonApp.name }}-deployment
+    app: {{ .Values.image.pythonApp.name }}
   ports:
     - port: {{ .Values.image.pythonApp.servicePort }}
       targetPort: {{ .Values.image.pythonApp.containerPort }}

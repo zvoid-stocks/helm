@@ -29,7 +29,7 @@ metadata:
     app: {{ .Values.image.landing.name }}
 spec:
   selector:
-    app: {{ .Values.image.landing.name }}-deployment
+    app: {{ .Values.image.landing.name }}
   ports:
     - port: {{ .Values.image.landing.servicePort }}
       targetPort: {{ .Values.image.landing.containerPort }}

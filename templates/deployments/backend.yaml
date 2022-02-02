@@ -18,6 +18,11 @@ spec:
         image: {{ .Values.image.backend.repository }}:{{ .Values.image.backend.tag }}
         ports:
         - containerPort: {{ .Values.image.backend.containerPort }}
+        env:
+        - name: env
+          value: prod
+        - name: PYTHON_BASE_URL
+          value: "http://10.245.184.190"
 
 ---
 
@@ -29,7 +34,7 @@ metadata:
     app: {{ .Values.image.backend.name }}
 spec:
   selector:
-    app: {{ .Values.image.backend.name }}-deployment
+    app: {{ .Values.image.backend.name }}
   ports:
     - port: {{ .Values.image.backend.servicePort }}
       targetPort: {{ .Values.image.backend.containerPort }}
