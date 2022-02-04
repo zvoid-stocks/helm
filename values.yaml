@@ -10,7 +10,7 @@ image:
     name: backend
     repository: rahulsinha1908/stock-backend-app
     pullPolicy: IfNotPresent
-    tag: v10
+    tag: v13
     containerPort: 3001
     servicePort: 80
   pythonApp:
