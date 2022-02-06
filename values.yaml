@@ -1,4 +1,11 @@
 image:
+  fallonFrontend:
+    name: fallon-frontend
+    repository: rahulsinha1908/fallon-frontend
+    pullPolicy: IfNotPresent
+    tag: v3
+    containerPort: 80
+    servicePort: 80
   frontend:
     name: frontend
     repository: rahulsinha1908/stock-frontend
@@ -46,11 +53,18 @@ ingress:
         - path: "/api/v1"
           serviceName: "backend-service"
           servicePort: 80
+    - host: fallon.bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "fallon-frontend-service"
+          servicePort: 80
   tls:
     - secretName: stock-app-tls-secret
       hosts:
         - bigandsmallapps.com
         - api.bigandsmallapps.com
+        - fallon.bigandsmallapps.com
+        - fallonapi.bigandsmallapps.com
 
 autoscaling:
   enabled: false

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.fallonFrontend.name }}-deployment
+  labels:
+    app: {{ .Values.image.fallonFrontend.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.image.fallonFrontend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.image.fallonFrontend.name }}
+    spec:
+      containers:
+      - name: {{ .Values.image.fallonFrontend.name }}
+        image: {{ .Values.image.fallonFrontend.repository }}:{{ .Values.image.fallonFrontend.tag }}
+        ports:
+        - containerPort: {{ .Values.image.fallonFrontend.containerPort }}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.image.fallonFrontend.name }}-service
+  labels:
+    app: {{ .Values.image.fallonFrontend.name }}
+spec:
+  selector:
+    app: {{ .Values.image.fallonFrontend.name }}
+  ports:
+    - port: {{ .Values.image.fallonFrontend.servicePort }}
+      targetPort: {{ .Values.image.fallonFrontend.containerPort }}
+      protocol: TCP
+      name: http
+  
