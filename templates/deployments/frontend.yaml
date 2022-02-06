@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.frontend.name }}-deployment
+  labels:
+    app: {{ .Values.image.frontend.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.image.frontend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.image.frontend.name }}
+    spec:
+      containers:
+      - name: {{ .Values.image.frontend.name }}
+        image: {{ .Values.image.frontend.repository }}:{{ .Values.image.frontend.tag }}
+        ports:
+        - containerPort: {{ .Values.image.frontend.containerPort }}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.image.frontend.name }}-service
+  labels:
+    app: {{ .Values.image.frontend.name }}
+spec:
+  selector:
+    app: {{ .Values.image.frontend.name }}
+  ports:
+    - port: {{ .Values.image.frontend.servicePort }}
+      targetPort: {{ .Values.image.frontend.containerPort }}
+      protocol: TCP
+      name: http
+  

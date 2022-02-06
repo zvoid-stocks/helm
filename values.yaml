@@ -1,16 +1,16 @@
 image:
-  landing:
-    name: landing
-    repository: nginx
+  frontend:
+    name: frontend
+    repository: rahulsinha1908/stock-frontend
     pullPolicy: IfNotPresent
-    tag: latest
+    tag: v5
     containerPort: 80
     servicePort: 80
   backend:
     name: backend
     repository: rahulsinha1908/stock-backend-app
     pullPolicy: IfNotPresent
-    tag: v13
+    tag: v17
     containerPort: 3001
     servicePort: 80
   pythonApp:
@@ -39,7 +39,7 @@ ingress:
     - host: bigandsmallapps.com
       paths:
         - path: "/"
-          serviceName: "landing-service"
+          serviceName: "frontend-service"
           servicePort: 80
     - host: api.bigandsmallapps.com
       paths:
