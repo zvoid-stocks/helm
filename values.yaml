@@ -3,14 +3,14 @@ image:
     name: fallon-frontend
     repository: rahulsinha1908/fallon-frontend
     pullPolicy: IfNotPresent
-    tag: v3
+    tag: v4
     containerPort: 80
     servicePort: 80
   frontend:
     name: frontend
     repository: rahulsinha1908/stock-frontend
     pullPolicy: IfNotPresent
-    tag: v11
+    tag: v13
     containerPort: 80
     servicePort: 80
   backend:
