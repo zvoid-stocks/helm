@@ -31,7 +31,7 @@ image:
     name: python-scrapper
     repository: rahulsinha1908/stock-python-scrapper
     pullPolicy: IfNotPresent
-    tag: v7
+    tag: v8
 
 imagePullSecrets: []
 
