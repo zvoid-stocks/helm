@@ -3,7 +3,7 @@ image:
     name: fallon-frontend
     repository: rahulsinha1908/fallon-frontend
     pullPolicy: IfNotPresent
-    tag: v4
+    tag: v5
     containerPort: 80
     servicePort: 80
   frontend:
