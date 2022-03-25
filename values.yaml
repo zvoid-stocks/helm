@@ -10,14 +10,14 @@ image:
     name: frontend
     repository: rahulsinha1908/stock-frontend
     pullPolicy: IfNotPresent
-    tag: v20
+    tag: v21
     containerPort: 80
     servicePort: 80
   backend:
     name: backend
     repository: rahulsinha1908/stock-backend-app
     pullPolicy: IfNotPresent
-    tag: v30
+    tag: v31
     containerPort: 3001
     servicePort: 80
   pythonApp:
