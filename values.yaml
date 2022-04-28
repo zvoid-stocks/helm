@@ -10,7 +10,7 @@ image:
     name: frontend
     repository: rahulsinha1908/stock-frontend
     pullPolicy: IfNotPresent
-    tag: v25
+    tag: v26
     containerPort: 80
     servicePort: 80
   backend:
