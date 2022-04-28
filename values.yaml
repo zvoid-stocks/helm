@@ -24,7 +24,7 @@ image:
     name: python
     repository: rahulsinha1908/stock-python-app
     pullPolicy: IfNotPresent
-    tag: v22
+    tag: v23
     containerPort: 3002
     servicePort: 80
   pythonScrapper:
