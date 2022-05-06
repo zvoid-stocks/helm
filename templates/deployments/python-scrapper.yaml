@@ -1,16 +1,35 @@
-apiVersion: v1
-kind: Pod
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: {{ .Values.image.pythonScrapper.name }}-pod
+#   labels:
+#     app: {{ .Values.image.pythonScrapper.name }}
+# spec:
+#   containers:
+#   - name: {{ .Values.image.pythonScrapper.name }}
+#     image: {{ .Values.image.pythonScrapper.repository }}:{{ .Values.image.pythonScrapper.tag }}
+
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-  name: {{ .Values.image.pythonScrapper.name }}-pod
+  name: {{ .Values.image.pythonScrapper.name }}-cron
   labels:
     app: {{ .Values.image.pythonScrapper.name }}
 spec:
-  containers:
-  - name: {{ .Values.image.pythonScrapper.name }}
-    image: {{ .Values.image.pythonScrapper.repository }}:{{ .Values.image.pythonScrapper.tag }}
-
-
-
+  schedule: "0 10 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: {{ .Values.image.pythonScrapper.name }}
+            image: {{ .Values.image.pythonScrapper.repository }}:{{ .Values.image.pythonScrapper.tag }}
+            imagePullPolicy: {{ .Values.image.pythonScrapper.pullPolicy }}
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
 
 
 # --------------------------------USE LESS FROM HERE---------------------------------------
