@@ -26,9 +26,9 @@ spec:
             image: {{ .Values.image.pythonScrapper.repository }}:{{ .Values.image.pythonScrapper.tag }}
             imagePullPolicy: {{ .Values.image.pythonScrapper.pullPolicy }}
             command:
-            - /bin/sh
-            - -c
-            - date; echo Hello from the Kubernetes cluster
+            - python
+            - -u
+            - scrape.py
           restartPolicy: OnFailure
 
 
