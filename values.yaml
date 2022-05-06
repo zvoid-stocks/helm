@@ -10,14 +10,14 @@ image:
     name: frontend
     repository: rahulsinha1908/stock-frontend
     pullPolicy: IfNotPresent
-    tag: v29
+    tag: v30
     containerPort: 80
     servicePort: 80
   backend:
     name: backend
     repository: rahulsinha1908/stock-backend-app
     pullPolicy: IfNotPresent
-    tag: v46
+    tag: v50
     containerPort: 3001
     servicePort: 80
   pythonApp:
@@ -31,7 +31,7 @@ image:
     name: python-scrapper
     repository: rahulsinha1908/stock-python-scrapper
     pullPolicy: IfNotPresent
-    tag: v23
+    tag: v25
 
 imagePullSecrets: []
 
