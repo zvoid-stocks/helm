@@ -19,6 +19,7 @@ spec:
   schedule: "0 5 * * *"
   jobTemplate:
     spec:
+      ttlSecondsAfterFinished: 43200
       backoffLimit: 1
       template:
         spec:
