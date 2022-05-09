@@ -16,7 +16,7 @@ metadata:
   labels:
     app: {{ .Values.image.pythonScrapper.name }}
 spec:
-  schedule: "0 10 * * *"
+  schedule: "0 5 * * *"
   jobTemplate:
     spec:
       template:
@@ -29,7 +29,7 @@ spec:
             - python
             - -u
             - scrape.py
-          restartPolicy: OnFailure
+          restartPolicy: Never
 
 
 # --------------------------------USE LESS FROM HERE---------------------------------------
