@@ -2,6 +2,12 @@
 
 This repository is used to upgrade the deployment on kubernetes
 
+## Command to install published helm
+
+```
+helm repo add stock-app-helm https://zvoid-stocks.github.io/helm/
+```
+
 ## Upgrade
 
 Use this commamnd on kubernetes to upgrade the version
