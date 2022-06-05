@@ -5,8 +5,8 @@ on:
     workflows: [pages-build-deployment]
     types:
       - completed
-  # push:
-  #   branch: master
+  push:
+    branch: master
 
 env:
   HELM_NAMESPACE: stocks
@@ -46,8 +46,6 @@ jobs:
         kubeconfig: ${{ secrets.KUBECONFIG }}
     
     - name: Helm Upgrade
-      run: |
-            - name: List all changed files
       run: |
         if [ ${{ steps.changed-files.outputs.any_changed }} == 'true' ]
         then
