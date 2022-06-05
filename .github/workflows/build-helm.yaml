@@ -5,6 +5,8 @@ on:
     workflows: [pages-build-deployment]
     types:
       - completed
+  push:
+    branch: master
 
 env:
   HELM_NAMESPACE: stocks
@@ -18,11 +20,27 @@ jobs:
     runs-on: 'ubuntu-latest'
     name: Deployment
     steps:
-    - name: Connect to kubernetes
-      uses: azure/k8s-set-context@v2
+    - uses: actions/checkout@v3
       with:
-        method: kubeconfig
-        kubeconfig: ${{ secrets.KUBECONFIG }}
-    - name: Helm Upgrade
+        fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v22.2
+      with:
+        path: ./deploy-configs/
+        separator: " -f ./deploy-configs/"
+
+
+    - name: List all changed files
       run: |
-        helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
+        echo "Checking this out: -f ./deploy-configs/${{ steps.changed-files.outputs.all_changed_files }}"
+
+    # - name: Connect to kubernetes
+    #   uses: azure/k8s-set-context@v2
+    #   with:
+    #     method: kubeconfig
+    #     kubeconfig: ${{ secrets.KUBECONFIG }}
+    # - name: Helm Upgrade
+    #   run: |
+    #     helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
