@@ -34,7 +34,13 @@ jobs:
 
     - name: List all changed files
       run: |
-        echo "Checking this out: -f ${{ steps.changed-files.outputs.all_changed_files }}"
+        # echo "Checking this out: -f ${{ steps.changed-files.outputs.all_changed_files }}"
+        if [ ${{ steps.changed-files.outputs.any_changed }} == 'true' ]
+        then
+          echo "-f ${{ steps.changed-files.outputs.all_changed_files }}"
+        else
+          echo "Nothing changed"
+        fi
 
     # - name: Connect to kubernetes
     #   uses: azure/k8s-set-context@v2
