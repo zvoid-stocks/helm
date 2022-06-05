@@ -29,12 +29,12 @@ jobs:
       uses: tj-actions/changed-files@v22.2
       with:
         path: ./deploy-configs/
-        separator: " -f ./deploy-configs/"
+        separator: " -f "
 
 
     - name: List all changed files
       run: |
-        echo "Checking this out: -f ./deploy-configs/${{ steps.changed-files.outputs.all_changed_files }}"
+        echo "Checking this out: -f ${{ steps.changed-files.outputs.all_changed_files }}"
 
     # - name: Connect to kubernetes
     #   uses: azure/k8s-set-context@v2
