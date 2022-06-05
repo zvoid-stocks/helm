@@ -5,8 +5,8 @@ on:
     workflows: [pages-build-deployment]
     types:
       - completed
-  push:
-    branch: master
+  # push:
+  #   branch: master
 
 env:
   HELM_NAMESPACE: stocks
