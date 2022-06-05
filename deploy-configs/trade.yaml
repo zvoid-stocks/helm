@@ -1,0 +1,37 @@
+image:
+  trade:
+    name: backend-trade
+    repository: rahulsinha1908/stock-trade
+    pullPolicy: IfNotPresent
+    containerPort: 3001
+    servicePort: 80
+  tradeSocket:
+    name: backend-trade-socket
+    repository: rahulsinha1908/stock-trade-socket
+    pullPolicy: IfNotPresent
+    containerPort: 3001
+    servicePort: 80
+
+ingress:
+  hosts:
+    - host: bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "frontend-service"
+          servicePort: 80
+    - host: api.bigandsmallapps.com
+      paths:
+        - path: "/api/v1"
+          serviceName: "backend-service"
+          servicePort: 80
+        - path: "/trade"
+          serviceName: "backend-trade-service"
+          servicePort: 80
+        - path: "/socket"
+          serviceName: "backend-trade-socket-service"
+          servicePort: 80
+    - host: fallon.bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "fallon-frontend-service"
+          servicePort: 80
