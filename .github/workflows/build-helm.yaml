@@ -28,7 +28,7 @@ jobs:
       id: changed-files
       uses: tj-actions/changed-files@v22.2
       with:
-        files: ./deploy-configs/**
+        files: ./deploy-configs/**.yaml
         separator: " -f "
 
     - name: Get Template changes
@@ -49,10 +49,12 @@ jobs:
       run: |
         if [ ${{ steps.changed-files.outputs.any_changed }} == true ]
         then
-          helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values -f ${{ steps.changed-files.outputs.all_changed_files }}
+          echo ${{ steps.changed-files.outputs.all_changed_files }}
+          # helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values -f ${{ steps.changed-files.outputs.all_changed_files }}
         elif [ ${{ steps.template-changed-files.outputs.any_changed }} == true ]
         then
-          helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
+          echo ${{ steps.template-changed-files.outputs.all_changed_files }}
+          # helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
         else
           echo "No deploy-config nor any new deployment done"
         fi
