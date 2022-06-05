@@ -1,0 +1,28 @@
+name: Update and refresh Helm
+
+on:
+  workflow_run:
+    workflows: [pages-build-deployment]
+    types:
+      - completed
+
+env:
+  HELM_NAMESPACE: stocks
+  HELM_APP_NAME: stocks-app-helm
+  HELM_REPO: https://zvoid-stocks.github.io/helm/
+  HELM_REPO_NAME: stock-app-helm
+  # KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
+
+jobs:
+  deployment:
+    runs-on: 'ubuntu-latest'
+    name: Deployment
+    steps:
+    - name: Connect to kubernetes
+      uses: azure/k8s-set-context@v2
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+    - name: Helm Upgrade
+      run: |
+        helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
