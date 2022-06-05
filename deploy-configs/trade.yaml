@@ -3,13 +3,13 @@ image:
     name: backend-trade
     repository: rahulsinha1908/stock-trade
     pullPolicy: IfNotPresent
-    containerPort: 3001
+    containerPort: 8000
     servicePort: 80
   tradeSocket:
     name: backend-trade-socket
     repository: rahulsinha1908/stock-trade-socket
     pullPolicy: IfNotPresent
-    containerPort: 3001
+    containerPort: 9988
     servicePort: 80
 
 ingress:
