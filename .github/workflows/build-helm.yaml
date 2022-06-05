@@ -5,8 +5,8 @@ on:
     workflows: [pages-build-deployment]
     types:
       - completed
-  push:
-    branch: master
+  # push:
+  #   branch: master
 
 env:
   HELM_NAMESPACE: stocks
@@ -31,22 +31,30 @@ jobs:
         files: ./deploy-configs/**
         separator: " -f "
 
+    - name: Get Template changes
+      id: template-changed-files
+      uses: tj-actions/changed-files@v22.2
+      with:
+        files: ./docs/**
+        separator: " "
 
-    - name: List all changed files
+
+    - name: Connect to kubernetes
+      uses: azure/k8s-set-context@v2
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+    
+    - name: Helm Upgrade
       run: |
-        # echo "Checking this out: -f ${{ steps.changed-files.outputs.all_changed_files }}"
+            - name: List all changed files
+      run: |
         if [ ${{ steps.changed-files.outputs.any_changed }} == 'true' ]
         then
-          echo "-f ${{ steps.changed-files.outputs.all_changed_files }}"
+          helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values -f ${{ steps.changed-files.outputs.all_changed_files }}
+        elif [ ${{ steps.template-changed-files.outputs.any_changed }} == 'true' ]
+          helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
         else
-          echo "Nothing changed"
+          echo "No deploy-config nor any new deployment done"
         fi
 
-    # - name: Connect to kubernetes
-    #   uses: azure/k8s-set-context@v2
-    #   with:
-    #     method: kubeconfig
-    #     kubeconfig: ${{ secrets.KUBECONFIG }}
-    # - name: Helm Upgrade
-    #   run: |
-    #     helm upgrade -n $HELM_NAMESPACE $HELM_APP_NAME $HELM_REPO_NAME --repo $HELM_REPO --reuse-values
