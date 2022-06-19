@@ -1,4 +1,11 @@
 image:
+  fallonBackend:
+    name: fallon-backend
+    repository: rahulsinha1908/fallon-backend
+    pullPolicy: IfNotPresent
+    tag: latest
+    containerPort: 4201
+    servicePort: 80
   trade:
     name: backend-trade
     repository: rahulsinha1908/stock-trade
@@ -72,6 +79,9 @@ ingress:
           servicePort: 80
         - path: "/socket"
           serviceName: "backend-trade-socket-service"
+          servicePort: 80
+        - path: "/fallon"
+          serviceName: "fallon-backend-service"
           servicePort: 80
     - host: fallon.bigandsmallapps.com
       paths:
