@@ -10,6 +10,11 @@ image:
 
 ingress:
   hosts:
+    - host: bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "frontend-service"
+          servicePort: 80
     - host: api.bigandsmallapps.com
       paths:
         - path: "/api/v1"
@@ -23,4 +28,9 @@ ingress:
           servicePort: 80
         - path: "/fallon"
           serviceName: "fallon-backend-service"
+          servicePort: 80
+    - host: fallon.bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "fallon-frontend-service"
           servicePort: 80
