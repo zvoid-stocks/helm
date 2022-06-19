@@ -4,7 +4,7 @@ image:
     name: fallon-backend
     repository: rahulsinha1908/fallon-backend
     pullPolicy: IfNotPresent
-    tag: latest
+    # tag: 880afa692952d91dba4dad32cc8bfe1f21190a7f
     containerPort: 4201
     servicePort: 80
 
