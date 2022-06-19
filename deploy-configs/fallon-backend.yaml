@@ -1,0 +1,36 @@
+# 45893dac19ee1a2f486ea63b8ee121ea0783974a
+image:
+  fallonBackend:
+    name: fallon-backend
+    repository: rahulsinha1908/fallon-backend
+    pullPolicy: IfNotPresent
+    # tag: 880afa692952d91dba4dad32cc8bfe1f21190a7f
+    containerPort: 4201
+    servicePort: 80
+
+ingress:
+  hosts:
+    - host: bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "frontend-service"
+          servicePort: 80
+    - host: api.bigandsmallapps.com
+      paths:
+        - path: "/api/v1"
+          serviceName: "backend-service"
+          servicePort: 80
+        - path: "/trade"
+          serviceName: "backend-trade-service"
+          servicePort: 80
+        - path: "/socket"
+          serviceName: "backend-trade-socket-service"
+          servicePort: 80
+        - path: "/fallon"
+          serviceName: "fallon-backend-service"
+          servicePort: 80
+    - host: fallon.bigandsmallapps.com
+      paths:
+        - path: "/"
+          serviceName: "fallon-frontend-service"
+          servicePort: 80
