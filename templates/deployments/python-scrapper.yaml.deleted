@@ -1,3 +1,14 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: {{ .Values.image.pythonScrapper.name }}-pod
+#   labels:
+#     app: {{ .Values.image.pythonScrapper.name }}
+# spec:
+#   containers:
+#   - name: {{ .Values.image.pythonScrapper.name }}
+#     image: {{ .Values.image.pythonScrapper.repository }}:{{ .Values.image.pythonScrapper.tag }}
+
 apiVersion: batch/v1
 kind: CronJob
 metadata:
