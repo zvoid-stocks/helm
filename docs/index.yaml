@@ -3,9 +3,9 @@ entries:
   stock-app-helm:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-06-20T01:00:10.844048127+05:30"
+    created: "2022-07-07T22:56:00.355650866+05:30"
     description: A Helm chart for Kubernetes
-    digest: 25d62ad89d66ad9a0d327a6a2d6a84b31c0b7b3f22a862872444f8660820c6ca
+    digest: 91c3d4cc444f6fd59ed368ea35d48a8f1cf8427200490e3448476ad99b45f042
     name: stock-app-helm
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-06-20T01:00:10.842634831+05:30"
+    created: "2022-07-07T22:56:00.353789674+05:30"
     description: A Helm chart for Kubernetes
     digest: 3f1831797368b6b65f26c775a4f70431dc35cdd6203f46cba73a33d3d09c53c1
     name: stock-app-helm
@@ -21,4 +21,4 @@ entries:
     urls:
     - https://zvoid-stocks.github.io/helm/stock-app-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-20T01:00:10.841360795+05:30"
+generated: "2022-07-07T22:56:00.352415529+05:30"
