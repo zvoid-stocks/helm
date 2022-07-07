@@ -22,6 +22,7 @@ spec:
         - name: PROD
           value: "yes"
 
+# Added some lines just to detect some changes
 ---
 
 apiVersion: v1
@@ -38,5 +39,4 @@ spec:
       targetPort: {{ .Values.image.pythonApp.containerPort }}
       protocol: TCP
       name: http
-  
   
